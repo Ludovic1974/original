@@ -1,5 +1,8 @@
 package com.ludo.tutorial.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ludo.tutorial.dto.UserDto;
+import com.ludo.tutorial.model.Role;
 import com.ludo.tutorial.model.User;
 import com.ludo.tutorial.service.BookService;
+import com.ludo.tutorial.service.RoleService;
 import com.ludo.tutorial.service.UserService;
 
 @Controller
@@ -26,6 +31,9 @@ public class UserController {
 
 	@Autowired
 	private BookService bookService;
+
+	@Autowired
+	private RoleService roleService;
 
 	@GetMapping("/list")
 	public String userForm(Model model) {
@@ -106,6 +114,37 @@ public class UserController {
 		}
 		userService.loanBooks(user);
 		return "redirect:/user/list";
+	}
+
+	@GetMapping("/role")
+	public String userRole(@RequestParam("username") String username, Model model) {
+
+		User user = userService.getUser(username);
+		model.addAttribute("role", new Role());
+		addAttributes(model, user);
+		model.addAttribute(user);
+		return "userRole";
+	}
+
+	@PostMapping("/add_role")
+	public String addRole(@ModelAttribute("role") @Valid Role role, BindingResult result, Model model) {
+		if (result.hasErrors()) {
+			System.out.println("Pasando por la sección errores");
+			User user = userService.getUser(role.getUser().getUsername());
+			addAttributes(model, user);
+			return "userRole";
+		}
+		roleService.save(role);
+		return "redirect:/user/list";
+	}
+
+	private void addAttributes(Model model, User user) {
+		ArrayList<String> rolelist = new ArrayList<String>(Arrays.asList("ROLE_USER", "ROLE_WRITER", "ROLE_ADMIN"));
+		model.addAttribute(user);
+		model.addAttribute("rolelist", rolelist);
+		model.addAttribute("users", userService.listUsers());
+		model.addAttribute("titulo", "Gestionar permisos de " + user.getName());
+		model.addAttribute("descripcion", "Tabla que muestra los detalles acerca de " + user.getName());
 	}
 
 }

@@ -5,10 +5,10 @@
 
 	<groupId>com.ludo.tutorial</groupId>
 	<artifactId>springcrud</artifactId>
-	<version>0.2.4-Role-model</version>
+	<version>0.2.5-Role-and-users</version>
 	<packaging>war</packaging>
 
-	<name>Crud Book Model - Creating the Role model</name>
+	<name>Crud Book Model - Add roles to users</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.ludoviclaisnez.com</url>
 
