@@ -53,6 +53,9 @@
 								<form:label path="password" cssClass="form-label">Contraseña</form:label>
 								<form:password path="password" cssClass="form-control" />
 								<form:errors path="password" cssClass="error" />
+								<c:if test="${equalPasswords != null }">
+								<span class="error">${equalPasswords}</span>
+								</c:if>
 							</div>
 							<div class="mb-3">
 								<form:label path="confirmPassword" cssClass="form-label">Repetir contraseña</form:label>

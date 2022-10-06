@@ -48,9 +48,8 @@ public class CategoryDaoImpl implements LibraryDao {
 
 	@Override
 	public Category get(long id) {
+		return sessionFactory.getCurrentSession().find(Category.class, id);
 
-		Category category = sessionFactory.getCurrentSession().find(Category.class, id);
-		return category;
 	}
 
 }

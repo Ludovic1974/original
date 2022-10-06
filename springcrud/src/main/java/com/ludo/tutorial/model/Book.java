@@ -48,7 +48,7 @@ public class Book extends DateColumns {
 
 	// https://stackoverflow.com/questions/2990799/difference-between-fetchtype-lazy-and-eager-in-java-persistence-api
 	// de uno a uno se puede permitir el uso de ALL
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "book", fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "book")
 	@Valid
 	private BookDetails bookDetails;
 

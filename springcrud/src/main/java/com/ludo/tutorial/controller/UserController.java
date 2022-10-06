@@ -51,7 +51,19 @@ public class UserController {
 
 	@PostMapping("/save")
 	public String saveUser(@ModelAttribute("user") @Valid User user, BindingResult result, Model model) {
+		String equalPasswords = null;
 		if (result.hasErrors()) {
+			System.out.println("Número de errores: " + result.getErrorCount());
+			System.out.println("EqualPasswords.user: " + result.getFieldErrors());
+			System.out.println("Todas errores: " + result.getAllErrors().get(0).getDefaultMessage());
+			for (int i = 0; i < result.getAllErrors().size(); i++) {
+				if (result.getAllErrors().get(i).getDefaultMessage().equals("Las contraseñas no son iguales")) {
+					equalPasswords = "Las contraseñas no son iguales";
+					break;
+				}
+			}
+
+			model.addAttribute("equalPasswords", equalPasswords);
 			model.addAttribute(user);
 			addAttributes(model);
 			return "listUser";
@@ -85,8 +97,6 @@ public class UserController {
 			return "listUser";
 		}
 		userService.loanBooks(user);
-		model.addAttribute(user);
-		addAttributes(model);
 		return "redirect:/user/list";
 	}
 

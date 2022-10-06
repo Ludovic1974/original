@@ -4,7 +4,6 @@ import java.time.Year;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -39,7 +38,7 @@ public class BookDetails {
 	@Max(value = 2000, message = "{book.page_number_max.invalid}")
 	private String page_number;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "id")
 	private Book book;
 

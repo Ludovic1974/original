@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.TypedQuery;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,7 +22,6 @@ public class BookDaoImpl implements LibraryDao {
 		String sentencia;
 		TypedQuery<?> query;
 		sentencia = "from Book b ORDER BY b.title";
-		System.out.println(sentencia);
 		query = sessionFactory.getCurrentSession().createQuery(sentencia);
 		return query.getResultList();
 	}
@@ -65,9 +63,7 @@ public class BookDaoImpl implements LibraryDao {
 
 	@Override
 	public Book get(long id) {
-		Session session = sessionFactory.getCurrentSession();
-		Book book = session.get(Book.class, id);
-		return book;
+		return sessionFactory.getCurrentSession().get(Book.class, id);
 	}
 
 }

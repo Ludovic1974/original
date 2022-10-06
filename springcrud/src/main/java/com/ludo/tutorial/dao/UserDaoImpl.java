@@ -57,8 +57,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public User get(String username) {
-		User user = sessionFactory.getCurrentSession().find(User.class, username);
-		return user;
+		return sessionFactory.getCurrentSession().find(User.class, username);
 	}
 
 	@Override

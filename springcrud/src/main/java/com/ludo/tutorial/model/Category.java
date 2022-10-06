@@ -42,12 +42,15 @@ public class Category extends DateColumns {
 	// con los hijos de la clase
 	// SAVE es automáticamente disponible pero no respeta la relación
 	// establecida
-	@OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE,
-			CascadeType.DETACH }, mappedBy = "category")
+	@OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH }, mappedBy = "category")
 	private List<Book> books = new ArrayList<>();
 
 	public List<Book> getBooks() {
 		return books;
+	}
+
+	public void setBooks(List<Book> books) {
+		this.books = books;
 	}
 
 	// Los demás son: REMOVE --> borra la fila indicada y sus relaciones
