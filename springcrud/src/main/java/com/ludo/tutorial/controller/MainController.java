@@ -42,6 +42,7 @@ public class MainController {
 		msj += "Versión 0.2.1 Validación de la contraseña. Los dos campos deben de ser iguales.<br/>";
 		msj += "Versión 0.2.2 Validación de dos campos del formulario. Deben de ser iguales.<br/>";
 		msj += "Versión 0.2.3 Validación del campo email. No debe de figurar en la BDD.<br/>";
+		msj += "Versión 0.2.4 Creación del modelo RoleValidación del campo email. No debe de figurar en la BDD.<br/>";
 		mv.addObject("descripcion",
 				"En esta sección, aprenderemos cómo crear un CRUD usando Spring MVC e Hibernate ORM framework "
 						+ "sin ningún fichero de configuración XML que no sea el POM de Maven.");
