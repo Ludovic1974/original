@@ -49,7 +49,7 @@
 								<form:input path="email" cssClass="form-control" />
 								<form:errors path="email" cssClass="error" />
 								<c:if test="${emailExist != null }">
-								<span class="error">${emailExist}</span>
+									<span class="error">${emailExist}</span>
 								</c:if>
 							</div>
 							<div class="mb-3">
@@ -57,7 +57,7 @@
 								<form:password path="password" cssClass="form-control" />
 								<form:errors path="password" cssClass="error" />
 								<c:if test="${equalPasswords != null }">
-								<span class="error">${equalPasswords}</span>
+									<span class="error">${equalPasswords}</span>
 								</c:if>
 							</div>
 							<div class="mb-3">
@@ -94,7 +94,7 @@
 												<th>Email</th>
 												<th>Modificado</th>
 												<th>Activado</th>
-												<th colspan="3">Acciones</th>
+												<th colspan="4">Acciones</th>
 											</tr>
 											<c:url var="loan_books" value="loan_books">
 												<c:param name="username" value="${user.username}" />
@@ -104,6 +104,9 @@
 												<c:param name="username" value="${user.username}" />
 											</c:url>
 											<c:url var="edit" value="edit">
+												<c:param name="username" value="${user.username}" />
+											</c:url>
+											<c:url var="role" value="role">
 												<c:param name="username" value="${user.username}" />
 											</c:url>
 
@@ -126,6 +129,9 @@
 														<button type="submit" class="btn btn-danger btn-sm"
 															onclick="if(!(confirm('¿Seguro que quieres eliminar el registro?'))) return false">Borrar</button>
 												</a></td>
+												<td><a href="${role}" title="Gestionar permisos de ${user.name}">
+												<button type="submit" class="btn btn-info btn-sm">Permisos</button>
+										</a></td>
 											</tr>
 										</table>
 										<c:if test="${user.books.size() > 0}">

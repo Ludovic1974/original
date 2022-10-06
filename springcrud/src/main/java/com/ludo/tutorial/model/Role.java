@@ -3,6 +3,8 @@ package com.ludo.tutorial.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -13,6 +15,18 @@ public class Role {
 	@Column(name = "authority")
 	@NotEmpty(message = "{role.value.required}")
 	private String authority;
+
+	@ManyToOne
+	@JoinColumn(name = "username")
+	private User user;
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public Role() {
 
