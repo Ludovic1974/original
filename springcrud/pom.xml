@@ -5,10 +5,10 @@
 
 	<groupId>com.ludo.tutorial</groupId>
 	<artifactId>springcrud</artifactId>
-	<version>0.2.2-own-validation</version>
+	<version>0.2.3-email-unique</version>
 	<packaging>war</packaging>
 
-	<name>Crud Book Model - Creating your own validation rules</name>
+	<name>Crud Book Model - Validating email value - Must be unique</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.ludoviclaisnez.com</url>
 

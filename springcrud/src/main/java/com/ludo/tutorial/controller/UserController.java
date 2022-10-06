@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ludo.tutorial.dto.UserDto;
 import com.ludo.tutorial.model.User;
 import com.ludo.tutorial.service.BookService;
 import com.ludo.tutorial.service.UserService;
@@ -50,8 +51,9 @@ public class UserController {
 	}
 
 	@PostMapping("/save")
-	public String saveUser(@ModelAttribute("user") @Valid User user, BindingResult result, Model model) {
+	public String saveUser(@ModelAttribute("user") @Valid UserDto userDto, BindingResult result, Model model) {
 		String equalPasswords = null;
+		String emailExist = null;
 		if (result.hasErrors()) {
 			System.out.println("Número de errores: " + result.getErrorCount());
 			System.out.println("EqualPasswords.user: " + result.getFieldErrors());
@@ -59,15 +61,21 @@ public class UserController {
 			for (int i = 0; i < result.getAllErrors().size(); i++) {
 				if (result.getAllErrors().get(i).getDefaultMessage().equals("Las contraseñas no son iguales")) {
 					equalPasswords = "Las contraseñas no son iguales";
-					break;
+					continue;
+				}
+				if (result.getAllErrors().get(i).getDefaultMessage().equals("{user.email.exist}")) {
+					emailExist = "Este email ya existe";
 				}
 			}
 
 			model.addAttribute("equalPasswords", equalPasswords);
-			model.addAttribute(user);
+			model.addAttribute("emailExist", emailExist);
+			model.addAttribute(userDto);
 			addAttributes(model);
 			return "listUser";
 		}
+		User user = new User(userDto);
+
 		userService.save(user);
 		return "redirect:/user/list";
 	}

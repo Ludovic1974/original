@@ -18,10 +18,12 @@ public interface UserService {
 
 	List<?> listUsers();
 
+	List<?> findByEmail(String email);
+
+	List<?> ListWithBooks();
+
 	long numUsers();
 
 	void loanBooks(@Valid User user);
-
-	List<?> ListWithBooks();
 
 }

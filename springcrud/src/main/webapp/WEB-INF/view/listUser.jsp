@@ -48,6 +48,9 @@
 								<form:label path="email" cssClass="form-label">Email</form:label>
 								<form:input path="email" cssClass="form-control" />
 								<form:errors path="email" cssClass="error" />
+								<c:if test="${emailExist != null }">
+								<span class="error">${emailExist}</span>
+								</c:if>
 							</div>
 							<div class="mb-3">
 								<form:label path="password" cssClass="form-label">Contraseña</form:label>

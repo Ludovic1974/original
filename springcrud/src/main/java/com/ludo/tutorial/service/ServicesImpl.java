@@ -170,6 +170,12 @@ public class ServicesImpl implements BookService, CategoryService, UserService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
+	public List<?> findByEmail(String email) {
+		return userDao.findByEmail(email);
+	}
+
+	@Override
 	@Transactional
 	public long numUsers() {
 		return userDao.num();

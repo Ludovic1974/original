@@ -45,7 +45,15 @@ public class UserDaoImpl implements UserDao {
 		sentencia = "SELECT distinct user from User user left outer join fetch user.books books ORDER BY user.username";
 		query = sessionFactory.getCurrentSession().createQuery(sentencia);
 		return query.getResultList();
+	}
 
+	@Override
+	public List<?> findByEmail(String email) {
+		String sentencia;
+		TypedQuery<?> query;
+		sentencia = "SELECT user FROM User user where user.email = :email";
+		query = sessionFactory.getCurrentSession().createQuery(sentencia).setParameter("email", email);
+		return query.getResultList();
 	}
 
 	@Override
