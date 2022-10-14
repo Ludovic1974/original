@@ -1,6 +1,7 @@
 package com.ludo.tutorial.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -44,6 +45,7 @@ public class MainController {
 		msj += "Versión 0.2.3 Validación del campo email. No debe de figurar en la BDD.<br/>";
 		msj += "Versión 0.2.4 Creación del modelo Role.<br/>";
 		msj += "Versión 0.2.5 Atribuir roles a los usuarios.<br/>";
+		msj += "Versión 0.2.6 Añadir el inicio de sesión.<br/>";
 		mv.addObject("descripcion",
 				"En esta sección, aprenderemos cómo crear un CRUD usando Spring MVC e Hibernate ORM framework "
 						+ "sin ningún fichero de configuración XML que no sea el POM de Maven.");
@@ -51,6 +53,16 @@ public class MainController {
 		mv.addObject("menu", "index");
 		mv.setViewName("index");
 
+		return mv;
+	}
+
+	@GetMapping("/login")
+	public ModelAndView login() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("titulo", "Página de login");
+		mv.addObject("descripcion", "Presentación de las funciones login usando Java Framework Security");
+
+		mv.setViewName("login");
 		return mv;
 	}
 
