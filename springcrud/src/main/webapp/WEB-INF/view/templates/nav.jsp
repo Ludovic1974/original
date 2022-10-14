@@ -15,9 +15,11 @@
 				<li class="nav-item"><a	href="${pageContext.request.contextPath}/category/list"	class="nav-link ${menu == 'lista_categorias' ? 'active' : ''}">Gestionar categorías</a></li>
 				<li class="nav-item"><a	href="${pageContext.request.contextPath}/user/list"	class="nav-link ${menu == 'lista_usuarios' ? 'active' : ''}"">Gestionar	usuarios</a></li>
 			</ul>
-			<form:form action="#" class="d-flex" method="POST">
-				<input type="submit" class="btn btn-outline-danger"
-					value="Cerrar sesión" />
+			<form:form action="${pageContext.request.contextPath}/logout"
+				class="d-flex" method="POST">
+				<input type="submit"
+					class="btn btn-outline-danger"
+					value="Cerrar sesión" />				
 			</form:form>
 		</div>
 	</div>

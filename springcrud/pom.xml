@@ -5,10 +5,10 @@
 
 	<groupId>com.ludo.tutorial</groupId>
 	<artifactId>springcrud</artifactId>
-	<version>0.2.6-Init-session</version>
+	<version>0.2.7-Init-session-p2</version>
 	<packaging>war</packaging>
 
-	<name>Crud Book Model - Init session</name>
+	<name>Crud Book Model - Init session - part 2</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.ludoviclaisnez.com</url>
 

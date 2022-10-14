@@ -3,13 +3,14 @@ package com.ludo.tutorial.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name = "role")
+@Table(name = "role", indexes = @Index(columnList = "authority", unique = false))
 public class Role {
 	@Id
 	@Column(name = "authority")

@@ -46,6 +46,7 @@ public class MainController {
 		msj += "Versión 0.2.4 Creación del modelo Role.<br/>";
 		msj += "Versión 0.2.5 Atribuir roles a los usuarios.<br/>";
 		msj += "Versión 0.2.6 Añadir el inicio de sesión.<br/>";
+		msj += "Versión 0.2.7 Afinar las opciones disponibles con el inicio de sesión.<br/>";
 		mv.addObject("descripcion",
 				"En esta sección, aprenderemos cómo crear un CRUD usando Spring MVC e Hibernate ORM framework "
 						+ "sin ningún fichero de configuración XML que no sea el POM de Maven.");
@@ -64,6 +65,44 @@ public class MainController {
 
 		mv.setViewName("login");
 		return mv;
+	}
+
+	@GetMapping("/forbidden")
+	public ModelAndView forbidden() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("titulo", "Contenidos restringidos");
+		mv.addObject("descripcion", "Ups! Por lo que parece, no puedes acceder a estos contenidos");
+		mv.addObject("lorem", lorem());
+
+		mv.setViewName("forbidden");
+		return mv;
+	}
+
+	private String lorem() {
+		String cadena = "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut\r\n"
+				+ "						posuere orci tortor, at ornare est mollis et. Quisque vel rhoncus\r\n"
+				+ "						tortor, et vehicula tortor. Maecenas et bibendum arcu. Etiam id\r\n"
+				+ "						erat eu felis viverra hendrerit sit amet quis felis. Etiam auctor\r\n"
+				+ "						est ut est aliquam feugiat et faucibus leo. Phasellus et magna\r\n"
+				+ "						justo. Suspendisse non vehicula leo. Pellentesque sollicitudin\r\n"
+				+ "						augue ac sem sollicitudin blandit sit amet in metus.</p>\r\n"
+				+ "					<p>Fusce a est at dolor ultrices tempor. Vivamus iaculis\r\n"
+				+ "						laoreet turpis, vitae sagittis ante cursus sit amet. Donec non\r\n"
+				+ "						elit rhoncus, pretium dui eget, sodales ipsum. Aenean sed placerat\r\n"
+				+ "						velit. Nunc ultrices semper lacus vitae pellentesque. Fusce eget\r\n"
+				+ "						nulla gravida, hendrerit ipsum ac, vehicula felis. Vivamus in\r\n"
+				+ "						placerat nisi. Aenean dignissim enim vel neque euismod posuere.\r\n"
+				+ "						Curabitur hendrerit nunc in magna volutpat, et dignissim ex\r\n"
+				+ "						sollicitudin.</p>\r\n"
+				+ "					<p>Suspendisse sit amet augue pharetra, ultricies odio\r\n"
+				+ "						condimentum, rutrum velit. Vivamus id lorem dapibus, sagittis\r\n"
+				+ "						velit vitae, mattis elit. Sed id varius leo. Cras convallis ligula\r\n"
+				+ "						dictum, pellentesque quam eget, mattis lectus. Nulla maximus\r\n"
+				+ "						pretium mi, eget mollis quam tincidunt et. Maecenas sollicitudin\r\n"
+				+ "						dolor in ligula efficitur, scelerisque fringilla neque sodales.\r\n"
+				+ "						Sed aliquet metus eget lectus iaculis, ut viverra urna pretium. Ut\r\n"
+				+ "						sed imperdiet ex.</p>";
+		return cadena;
 	}
 
 }
