@@ -12,6 +12,7 @@ import com.ludo.tutorial.other.EqualFields;
 import com.ludo.tutorial.other.UniqueField;
 
 @EqualFields(baseField = "password", matchField = "confirmPassword", message = "{user.fields.not.igual}")
+@UniqueField(email = "email", username = "username", message = "{user.email.exist}")
 public class UserDto {
 
 	@NotEmpty(message = "{username.value.required}")
@@ -32,7 +33,6 @@ public class UserDto {
 
 	@Email(message = "{user.email.invalid}")
 	@NotEmpty(message = "{email.value.required}")
-	@UniqueField
 	private String email;
 
 	private boolean enabled;

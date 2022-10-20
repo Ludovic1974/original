@@ -48,7 +48,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public List<?> findByEmail(String email) {
+	public List<?> findByEmail(Object email) {
 		String sentencia;
 		TypedQuery<?> query;
 		sentencia = "SELECT user FROM User user where user.email = :email";

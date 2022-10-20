@@ -16,6 +16,6 @@ public interface UserDao extends ObjectDao {
 
 	List<?> ListWithBooks();
 
-	List<?> findByEmail(String email);
+	List<?> findByEmail(Object email);
 
 }

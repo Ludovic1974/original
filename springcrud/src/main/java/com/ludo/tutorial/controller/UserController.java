@@ -70,11 +70,13 @@ public class UserController {
 			System.out.println("Todas errores: " + result.getAllErrors().get(0).getDefaultMessage());
 			for (int i = 0; i < result.getAllErrors().size(); i++) {
 				if (result.getAllErrors().get(i).getDefaultMessage().equals("Las contraseñas no son iguales")) {
+					System.out.println("error" + i + " " + result.getAllErrors().get(i).getDefaultMessage());
 					equalPasswords = "Las contraseñas no son iguales";
 					continue;
 				}
-				if (result.getAllErrors().get(i).getDefaultMessage().equals("{user.email.exist}")) {
-					emailExist = "Este email ya existe";
+				if (result.getAllErrors().get(i).getDefaultMessage().equals("Este email ya está registrado.")) {
+					System.out.println("Todas errores: " + result.getAllErrors().get(i).getDefaultMessage());
+					emailExist = "Este email ya está registrado.";
 				}
 			}
 

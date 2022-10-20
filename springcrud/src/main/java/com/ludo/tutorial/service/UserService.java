@@ -16,7 +16,7 @@ public interface UserService {
 
 	List<?> listUsers();
 
-	List<?> findByEmail(String email);
+	List<?> findByEmail(Object email);
 
 	List<?> ListWithBooks();
 

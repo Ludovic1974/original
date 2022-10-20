@@ -177,7 +177,7 @@ public class ServicesImpl implements BookService, CategoryService, UserService, 
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<?> findByEmail(String email) {
+	public List<?> findByEmail(Object email) {
 		return userDao.findByEmail(email);
 	}
 
