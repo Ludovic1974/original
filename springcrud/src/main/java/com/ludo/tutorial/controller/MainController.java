@@ -47,7 +47,7 @@ public class MainController {
 		msj += "Versión 0.2.5 Atribuir roles a los usuarios.<br/>";
 		msj += "Versión 0.2.6 Añadir el inicio de sesión.<br/>";
 		msj += "Versión 0.2.7 Afinar las opciones disponibles con el inicio de sesión.<br/>";
-		msj += "Versión 0.2.8 Revisión global.<br/>";
+		msj += "Versión 0.2.8 Revisión global. Resolviendo un problema de seguridad.<br/>";
 		mv.addObject("descripcion",
 				"En esta sección, aprenderemos cómo crear un CRUD usando Spring MVC e Hibernate ORM framework "
 						+ "sin ningún fichero de configuración XML que no sea el POM de Maven.");
