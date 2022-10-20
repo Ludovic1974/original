@@ -19,9 +19,7 @@
 						<form:form action="add_role" method="post" modelAttribute="role">
 							<div class="mb-3">
 
-								<form:label path="user.username" cssClass="form-label">Nombre de perfil<span
-										class="asterix">*</span>
-								</form:label>
+								<form:label path="user.username" cssClass="form-label">Nombre de perfil</form:label>
 								<form:input path="user.username" disabled="true"
 									cssClass="form-control" value="${user.username}" />
 								<form:errors path="user.username" cssClass="errors" />
@@ -31,18 +29,11 @@
 								<label for="authority" class="form-label">Rol<span
 									class="asterix">*</span></label>
 								<form:select path="authority" cssClass="form-control">
-<%-- 									<form:option value="" label="Seleccionar permiso" /> --%>
 									<c:forEach var="role" items="${rolelist}">
 										<option value="${role}" label="${role}" />
 									</c:forEach>
 								</form:select>
 								<form:errors path="authority" cssClass="errors" />
-<!-- 								<div class="form-switch text-start"> -->
-<!-- 									<label for="roles" class="form-check-label">Permisos<span -->
-<!-- 									class="asterix">*</span></label><br/>							 -->
-<%-- 									<form:checkboxes path="roles" cssClass="form-check-input mx-3" items="${rolelist}" itemValue="authority" itemLabel="authority" delimiter="<br/>"/> --%>
-<%-- 									<form:errors path="roles" cssClass="errors" /> --%>
-<!-- 								</div> -->
 							</div>
 							<button type="submit" class="btn btn-primary">Validar</button>
 						</form:form>

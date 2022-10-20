@@ -2,8 +2,6 @@ package com.ludo.tutorial.service;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import com.ludo.tutorial.model.User;
 
 public interface UserService {
@@ -12,7 +10,7 @@ public interface UserService {
 
 	User getUserWithBooks(String username);
 
-	void save(@Valid User user);
+	void save(User user);
 
 	void deleteUser(String username);
 
@@ -24,6 +22,6 @@ public interface UserService {
 
 	long numUsers();
 
-	void loanBooks(@Valid User user);
+	void loanBooks(User user);
 
 }

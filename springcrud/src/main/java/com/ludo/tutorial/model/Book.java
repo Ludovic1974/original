@@ -25,9 +25,9 @@ import javax.validation.constraints.Size;
 public class Book extends DateColumns {
 
 	/*
-	 * El hecho de añadir la herencia DateColumns al proyecto hará que el sistema
-	 * añadirá nuevas columnas al modelo Book. Eso nos obligará a borrar la tabla
-	 * Book de nuestra base de datos.
+	 * Propiedades El hecho de añadir la herencia DateColumns al proyecto hará que
+	 * el sistema añadirá nuevas columnas al modelo Book. Eso nos obligará a borrar
+	 * la tabla Book de nuestra base de datos.
 	 * 
 	 */
 
@@ -46,6 +46,10 @@ public class Book extends DateColumns {
 	@NotEmpty(message = "{book.value.required}")
 	private String author;
 
+	/*
+	 * RELACIONES
+	 */
+	// UNO A UNO
 	// https://stackoverflow.com/questions/2990799/difference-between-fetchtype-lazy-and-eager-in-java-persistence-api
 	// de uno a uno se puede permitir el uso de ALL
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "book")
@@ -59,7 +63,9 @@ public class Book extends DateColumns {
 	public void setBookDetails(BookDetails bookDetails) {
 		this.bookDetails = bookDetails;
 	}
+	// FIN UNO A UNO
 
+	// MANY TO ONE
 	@ManyToOne
 	@JoinColumn(name = "cat_id")
 	@Valid
@@ -72,7 +78,9 @@ public class Book extends DateColumns {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+	// FIN MANY TO ONE
 
+	// MANY TO MANY
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "books")
 	private List<User> users = new ArrayList<>();
 
@@ -83,7 +91,11 @@ public class Book extends DateColumns {
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
+	// FIN MANY TO MANY
 
+	/*
+	 * CONSTRUCTORES
+	 */
 	public Book() {
 	}
 
@@ -114,6 +126,10 @@ public class Book extends DateColumns {
 		this.author = author;
 	}
 
+	/*
+	 * GETTERS / SETTERS
+	 */
+
 	public long getId() {
 		return id;
 	}
@@ -137,6 +153,10 @@ public class Book extends DateColumns {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
+
+	/*
+	 * TO STRING
+	 */
 
 	@Override
 	public String toString() {

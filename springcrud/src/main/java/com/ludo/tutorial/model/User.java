@@ -27,34 +27,34 @@ import com.ludo.tutorial.other.EqualFields;
 @Table(name = "user")
 @EqualFields(baseField = "password", matchField = "confirmPassword", message = "{user.fields.not.igual}")
 public class User extends DateColumns {
+	/*
+	 * Propiedades
+	 */
 	@Id
 	@Column(name = "username")
 	private String username;
 
 	@Column(name = "name")
-	@Size(max = 50, min = 3, message = "{user.name.invalid}")
 	private String name;
 
 	@Column(name = "surname")
-	@Size(max = 50, min = 3, message = "{user.surname.invalid}")
 	private String surname;
 
 	@Column(name = "password")
-	@Size(max = 225, min = 3, message = "{user.password.invalid}")
-	@NotEmpty(message = "{password.value.required}")
 	private String password;
 
 	@Column(name = "confirm_password")
 	private String confirmPassword;
 
 	@Column(name = "email", length = 50)
-	@Email(message = "{user.email.invalid}")
-	// @EmailExist(email = "email") //Probando con el email repetito //no funciona
 	private String email;
 
 	@Column(name = "enabled")
 	private boolean enabled;
 
+	/*
+	 * RELACIONES
+	 */
 	// https://stackoverflow.com/questions/2990799/difference-between-fetchtype-lazy-and-eager-in-java-persistence-api
 	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH }, fetch = FetchType.LAZY)
 	@JoinTable(name = "user_book", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
@@ -79,6 +79,10 @@ public class User extends DateColumns {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
+
+	/*
+	 * CONSTRUCTORES
+	 */
 
 	public User() {
 	}
@@ -126,6 +130,10 @@ public class User extends DateColumns {
 		this.setConfirmPassword(copy.getConfirmPassword());
 		this.setBooks(copy.getBooks());
 	}
+
+	/*
+	 * GETTERS / SETTERS
+	 */
 
 	public String getUsername() {
 		return username;
@@ -183,6 +191,9 @@ public class User extends DateColumns {
 		this.enabled = enabled;
 	}
 
+	/*
+	 * TO STRING
+	 */
 	@Override
 	public String toString() {
 		return String.format(

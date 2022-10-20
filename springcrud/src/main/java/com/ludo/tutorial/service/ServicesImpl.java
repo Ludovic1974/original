@@ -2,8 +2,6 @@ package com.ludo.tutorial.service;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.User.UserBuilder;
@@ -93,7 +91,7 @@ public class ServicesImpl implements BookService, CategoryService, UserService, 
 
 	@Override
 	@Transactional
-	public void save(@Valid Category category) {
+	public void save(Category category) {
 		if (category.getId() > 0) {
 			System.out.println("Actu de categoría");
 			category.setUpdatedAt(Fecha.getTimeStamp());
@@ -191,7 +189,7 @@ public class ServicesImpl implements BookService, CategoryService, UserService, 
 
 	@Override
 	@Transactional
-	public void loanBooks(@Valid User user) {
+	public void loanBooks(User user) {
 		userDao.loanBooks(user);
 
 	}

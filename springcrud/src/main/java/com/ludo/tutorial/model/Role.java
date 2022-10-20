@@ -12,11 +12,18 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 @Table(name = "role", indexes = @Index(columnList = "authority", unique = false))
 public class Role {
+
+	/*
+	 * Propiedades
+	 */
 	@Id
 	@Column(name = "authority")
 	@NotEmpty(message = "{role.value.required}")
 	private String authority;
 
+	/*
+	 * RELACIONES
+	 */
 	@ManyToOne
 	@JoinColumn(name = "username")
 	private User user;
@@ -29,6 +36,10 @@ public class Role {
 		this.user = user;
 	}
 
+	/*
+	 * CONSTRUCTORES
+	 */
+
 	public Role() {
 
 	}
@@ -36,6 +47,10 @@ public class Role {
 	public Role(String authority) {
 		this.authority = authority;
 	}
+
+	/*
+	 * GETTERS / SETTERS
+	 */
 
 	public String getAuthority() {
 		return authority;
@@ -45,6 +60,9 @@ public class Role {
 		this.authority = authority;
 	}
 
+	/*
+	 * TO STRING
+	 */
 	@Override
 	public String toString() {
 		return String.format("Role [getAuthority()=%s]", getAuthority());

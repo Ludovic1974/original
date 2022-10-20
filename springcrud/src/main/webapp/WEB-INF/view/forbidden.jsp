@@ -30,7 +30,7 @@
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/view/templates/footer.jsp">
-		<jsp:param name="web" value="campus2b.com" />
+		<jsp:param name="web" value="ludoviclaisnez.com" />
 	</jsp:include>
 </body>
 </html>

@@ -19,6 +19,9 @@ import javax.validation.constraints.PastOrPresent;
 @Table(name = "book_details")
 public class BookDetails {
 
+	/*
+	 * Propiedades
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
@@ -38,6 +41,9 @@ public class BookDetails {
 	@Max(value = 2000, message = "{book.page_number_max.invalid}")
 	private String page_number;
 
+	/*
+	 * RELACIONES
+	 */
 	@OneToOne
 	@JoinColumn(name = "id")
 	private Book book;
@@ -50,6 +56,10 @@ public class BookDetails {
 		this.book = book;
 	}
 
+	/*
+	 * CONSTRUCTORES
+	 */
+
 	public BookDetails() {
 	}
 
@@ -60,7 +70,9 @@ public class BookDetails {
 		this.page_number = page_number;
 	}
 
-	// MÁS GETTERS / SETTERS
+	/*
+	 * GETTERS / SETTERS
+	 */
 
 	public long getId() {
 		return id;
@@ -93,6 +105,10 @@ public class BookDetails {
 	public void setPage_number(String page_number) {
 		this.page_number = page_number;
 	}
+
+	/*
+	 * TO STRING
+	 */
 
 	@Override
 	public String toString() {

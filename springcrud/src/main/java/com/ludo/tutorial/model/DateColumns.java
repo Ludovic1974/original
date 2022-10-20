@@ -13,8 +13,9 @@ import org.springframework.data.annotation.LastModifiedDate;
 @MappedSuperclass
 public class DateColumns {
 	/*
-	 * Para poder utilizar las anotaciones @CreatedDate y @LastModifiedDate
-	 * necesitaremos añadir la dependencia spring-data-jpa al POM
+	 * Propiedades Para poder utilizar las anotaciones @CreatedDate
+	 * y @LastModifiedDate necesitaremos añadir la dependencia spring-data-jpa al
+	 * POM
 	 */
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "created_at", nullable = false, updatable = false)
@@ -26,6 +27,9 @@ public class DateColumns {
 	@LastModifiedDate
 	private Date updatedAt;
 
+	/*
+	 * CONSTRUCTORES
+	 */
 	public DateColumns(Date createdAt, Date updatedAt) {
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
@@ -33,6 +37,10 @@ public class DateColumns {
 
 	public DateColumns() {
 	}
+
+	/*
+	 * GETTERS / SETTERS
+	 */
 
 	public Date getCreatedAt() {
 		return createdAt;

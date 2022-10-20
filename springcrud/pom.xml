@@ -5,10 +5,10 @@
 
 	<groupId>com.ludo.tutorial</groupId>
 	<artifactId>springcrud</artifactId>
-	<version>0.2.7-Init-session-p2</version>
+	<version>0.2.8-revision</version>
 	<packaging>war</packaging>
 
-	<name>Crud Book Model - Init session - part 2</name>
+	<name>Crud Book Model - Global Revision</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.ludoviclaisnez.com</url>
 
@@ -18,7 +18,7 @@
 		<maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
 		<org.springframework>5.3.22</org.springframework>
 		<hibernate.version>5.6.10.Final</hibernate.version>
-		<springsecurity.version>5.6.6</springsecurity.version>
+		<springsecurity.version>5.6.7</springsecurity.version>
 	</properties>
 
 	<dependencies>

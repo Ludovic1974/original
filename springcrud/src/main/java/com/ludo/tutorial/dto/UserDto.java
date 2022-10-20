@@ -16,18 +16,25 @@ public class UserDto {
 
 	@NotEmpty(message = "{username.value.required}")
 	private String username;
+
 	@Size(max = 50, min = 3, message = "{user.name.invalid}")
 	private String name;
+
 	@Size(max = 50, min = 3, message = "{user.surname.invalid}")
 	private String surname;
+
 	@Size(max = 225, min = 3, message = "{user.password.invalid}")
 	@NotEmpty(message = "{password.value.required}")
 	private String password;
+
+	@NotEmpty(message = "{password.value.required}")
 	private String confirmPassword;
+
 	@Email(message = "{user.email.invalid}")
 	@NotEmpty(message = "{email.value.required}")
 	@UniqueField
 	private String email;
+
 	private boolean enabled;
 
 	private List<Book> books = new ArrayList<>();

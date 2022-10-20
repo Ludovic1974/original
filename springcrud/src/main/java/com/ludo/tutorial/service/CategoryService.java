@@ -2,8 +2,6 @@ package com.ludo.tutorial.service;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import com.ludo.tutorial.model.Category;
 
 public interface CategoryService {
@@ -12,7 +10,7 @@ public interface CategoryService {
 
 	long numCategories();
 
-	void save(@Valid Category category);
+	void save(Category category);
 
 	void deleteCategory(long id);
 

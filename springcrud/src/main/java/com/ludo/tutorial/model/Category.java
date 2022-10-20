@@ -20,6 +20,9 @@ import javax.validation.constraints.Size;
 @Table(name = "category")
 public class Category extends DateColumns {
 
+	/*
+	 * Propiedades
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
@@ -31,6 +34,9 @@ public class Category extends DateColumns {
 	@NotNull(message = "{category.value.notnull}")
 	private String name;
 
+	/*
+	 * RELACIONES
+	 */
 	// De one to many se autoriza el uso de ALL
 	// Pero se debería de evitar a todo coste:
 	// No se debe utilizar como comodín ni ponerse en casos de desconocimiento de la
@@ -42,7 +48,8 @@ public class Category extends DateColumns {
 	// con los hijos de la clase
 	// SAVE es automáticamente disponible pero no respeta la relación
 	// establecida
-	@OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH }, mappedBy = "category")
+	@OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH,
+			CascadeType.REMOVE }, mappedBy = "category")
 	private List<Book> books = new ArrayList<>();
 
 	public List<Book> getBooks() {
@@ -62,6 +69,10 @@ public class Category extends DateColumns {
 	// Útil para garantizar que se esté manejando la versión
 	// más actualizada de una entidad en caso de haber sido
 	// modificado por otro usuario
+
+	/*
+	 * CONSTRUCTORES
+	 */
 
 	public Category(long id, Date createdAt, Date updatedAt,
 			@Size(max = 100, min = 3, message = "{category.name.invalid}") @NotEmpty(message = "{category.value.required}") String name) {
@@ -86,6 +97,10 @@ public class Category extends DateColumns {
 		// TODO Auto-generated constructor stub
 	}
 
+	/*
+	 * GETTERS / SETTERS
+	 */
+
 	public long getId() {
 		return id;
 	}
@@ -100,6 +115,14 @@ public class Category extends DateColumns {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	/*
+	 * TO STRING
+	 */
+	@Override
+	public String toString() {
+		return String.format("Category [getId()=%s, getName()=%s]", getId(), getName());
 	}
 
 }

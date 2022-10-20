@@ -3,7 +3,6 @@ package com.ludo.tutorial.dao;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
-import javax.validation.Valid;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +33,7 @@ public class CategoryDaoImpl implements LibraryDao {
 	}
 
 	@Override
-	public void save(@Valid Object category) {
+	public void save(Object category) {
 		sessionFactory.getCurrentSession().saveOrUpdate(category);
 
 	}
