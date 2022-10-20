@@ -20,13 +20,7 @@
 							<div class="mb-3">
 								<form:label path="name" cssClass="form-label">Nombre</form:label>
 								<form:input disabled="true" path="name" cssClass="form-control" />
-								<form:hidden path="username" />
-								<form:hidden path="enabled" />
-								<form:hidden path="name" />
-								<form:hidden path="surname" />
-								<form:hidden path="email" />
-								<form:hidden path="password" />
-								<form:hidden path="confirmPassword" />
+								<form:hidden path="username" />						
 							</div>
 							<div class="mb-3">
 								<form:label path="email" cssClass="form-label">Email</form:label>

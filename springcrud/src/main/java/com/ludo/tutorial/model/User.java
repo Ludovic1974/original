@@ -92,6 +92,11 @@ public class User extends DateColumns {
 
 	}
 
+	public User(String username) {
+		this.username = username;
+
+	}
+
 	public User(Date createdAt, Date updatedAt, String username,
 			@Size(max = 50, min = 3, message = "{user.name.invalid}") String name,
 			@Size(max = 50, min = 3, message = "{user.surname.invalid}") String surname,
