@@ -106,7 +106,7 @@ public class UserController {
 	}
 
 	@PostMapping("/confirm_loan")
-	public String confirmLoan(@ModelAttribute("user") @Valid User user, BindingResult result, Model model) {
+	public String confirmLoan(@ModelAttribute("user") User user, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			model.addAttribute(user);
 			addAttributes(model);
