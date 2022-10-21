@@ -8,8 +8,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import com.ludo.tutorial.model.Book;
-import com.ludo.tutorial.other.EqualFields;
-import com.ludo.tutorial.other.UniqueField;
+import com.ludo.tutorial.validator.EqualFields;
+import com.ludo.tutorial.validator.UniqueField;
 
 @EqualFields(baseField = "password", matchField = "confirmPassword", message = "{user.fields.not.igual}")
 @UniqueField(email = "email", username = "username", message = "{user.email.exist}")

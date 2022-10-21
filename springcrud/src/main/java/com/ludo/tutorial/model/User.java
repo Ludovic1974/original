@@ -21,7 +21,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import com.ludo.tutorial.dto.UserDto;
-import com.ludo.tutorial.other.EqualFields;
+import com.ludo.tutorial.validator.EqualFields;
 
 @Entity
 @Table(name = "user")

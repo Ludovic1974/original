@@ -1,9 +1,9 @@
-package com.ludo.tutorial.other;
-
-import java.lang.reflect.Field;
+package com.ludo.tutorial.validator;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+
+import com.ludo.tutorial.other.Funciones;
 
 /*
 * Para escribir nuestra lógica de verificación, debemos crear una clase que
@@ -19,11 +19,13 @@ public class EqualFieldsValidator implements ConstraintValidator<EqualFields, Ob
 	 */
 	private String baseField;
 	private String matchField;
+	private Funciones funciones;
 
 	@Override
 	public void initialize(EqualFields constraint) {
 		baseField = constraint.baseField();
 		matchField = constraint.matchField();
+		funciones = new Funciones();
 	}
 
 	/*
@@ -33,32 +35,13 @@ public class EqualFieldsValidator implements ConstraintValidator<EqualFields, Ob
 	@Override
 	public boolean isValid(Object object, ConstraintValidatorContext context) {
 		try {
-			Object baseFieldValue = getFieldValue(object, baseField);
-			Object matchFieldValue = getFieldValue(object, matchField);
+			Object baseFieldValue = funciones.getFieldValue(object, baseField);
+			Object matchFieldValue = funciones.getFieldValue(object, matchField);
 			return baseFieldValue != null && baseFieldValue.equals(matchFieldValue);
 		} catch (Exception e) {
 			// log error
 			return false;
 		}
 	}
-
-	private Object getFieldValue(Object object, String fieldName) throws Exception {
-		Class<?> clazz = object.getClass();
-		/*
-		 * La lógica de validación se volvió más compleja ya que ahora utiliza Reflect
-		 * para obtener valores de campos validados.
-		 */
-		Field field = clazz.getDeclaredField(fieldName);
-		field.setAccessible(true);
-		return field.get(object);
-	}
-
-	/*
-	 * La solución no es perfecta ya que depende del mecanismo de reflexión. Si se
-	 * cambia el nombre de un campo en la clase de datos, el atributo de cadena
-	 * correspondiente en la anotación de restricción declarada también tiene que
-	 * ser alterado. El compilador no advertirá sobre la discrepancia, por lo tanto
-	 * se requiere más atención de un programador.
-	 */
 
 }

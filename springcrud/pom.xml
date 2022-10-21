@@ -5,10 +5,10 @@
 
 	<groupId>com.ludo.tutorial</groupId>
 	<artifactId>springcrud</artifactId>
-	<version>0.2.8-solving-security-problem</version>
+	<version>0.2.9-solving-issue-with-current-user-email</version>
 	<packaging>war</packaging>
 
-	<name>Crud Book Model - Solving a security problem</name>
+	<name>Crud Book Model - Solving an issue with the current user's email</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.ludoviclaisnez.com</url>
 

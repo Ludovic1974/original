@@ -1,4 +1,4 @@
-package com.ludo.tutorial.other;
+package com.ludo.tutorial.validator;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
