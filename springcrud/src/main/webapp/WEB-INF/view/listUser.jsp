@@ -19,16 +19,17 @@
 						<fieldset>
 							<legend>${titulo}</legend>
 							<div class="mb-3">
-								
+
 								<c:choose>
 									<c:when test="${param.username == null}">
-									<form:label path="username" cssClass="form-label">Nombre de perfil<span
-										class="asterix">*</span></form:label>
+										<form:label path="username" cssClass="form-label">Nombre de perfil<span
+												class="asterix">*</span>
+										</form:label>
 										<form:input path="username" cssClass="form-control" />
 
 									</c:when>
 									<c:otherwise>
-									<form:label path="username" cssClass="form-label">Nombre de perfil</form:label>
+										<form:label path="username" cssClass="form-label">Nombre de perfil</form:label>
 										<form:input path="username" cssClass="form-control"
 											disabled="true" />
 										<form:hidden path="username" />
@@ -49,7 +50,8 @@
 							</div>
 							<div class="mb-3">
 								<form:label path="email" cssClass="form-label">Email<span
-										class="asterix">*</span></form:label>
+										class="asterix">*</span>
+								</form:label>
 								<form:input path="email" cssClass="form-control" />
 								<form:errors path="email" cssClass="error" />
 								<c:if test="${emailExist != null }">
@@ -58,7 +60,8 @@
 							</div>
 							<div class="mb-3">
 								<form:label path="password" cssClass="form-label">Contraseña<span
-										class="asterix">*</span></form:label>
+										class="asterix">*</span>
+								</form:label>
 								<form:password path="password" cssClass="form-control" />
 								<form:errors path="password" cssClass="error" />
 								<c:if test="${equalPasswords != null }">
@@ -67,7 +70,8 @@
 							</div>
 							<div class="mb-3">
 								<form:label path="confirmPassword" cssClass="form-label">Repetir contraseña<span
-										class="asterix">*</span></form:label>
+										class="asterix">*</span>
+								</form:label>
 								<form:password path="confirmPassword" cssClass="form-control" />
 								<form:errors path="confirmPassword" cssClass="error" />
 							</div>
@@ -99,6 +103,7 @@
 												<th>Apellido</th>
 												<th>Email</th>
 												<th>Modificado</th>
+												<th>Permisos</th>
 												<th>Activado</th>
 												<th colspan="4">Acciones</th>
 											</tr>
@@ -123,6 +128,15 @@
 												<td><fmt:formatDate type="both"
 														value="${user.updatedAt}" dateStyle="long"
 														timeStyle="short" /></td>
+												<td><c:if test="${user.roles!=null}">
+														<c:forEach items="${user.roles}" var="r">
+														${r.authority}
+														<c:if test="${user.roles.size()>1}"><br/></c:if>
+													</c:forEach>
+													</c:if> <c:if test="${user.roles.isEmpty()}">
+													Sin permisos
+												</c:if></td>
+
 												<td>${user.enabled==true ? "Activado":"Desactivado"}</td>
 												<td><a href="${loan_books}"
 													title="Consultar listado de libros prestados a ${user.name}">
@@ -135,9 +149,10 @@
 														<button type="submit" class="btn btn-danger btn-sm"
 															onclick="if(!(confirm('¿Seguro que quieres eliminar el registro?'))) return false">Borrar</button>
 												</a></td>
-												<td><a href="${role}" title="Gestionar permisos de ${user.name}">
-												<button type="submit" class="btn btn-info btn-sm">Permisos</button>
-										</a></td>
+												<td><a href="${role}"
+													title="Gestionar permisos de ${user.name}">
+														<button type="submit" class="btn btn-info btn-sm">Permisos</button>
+												</a></td>
 											</tr>
 										</table>
 										<c:if test="${user.books.size() > 0}">

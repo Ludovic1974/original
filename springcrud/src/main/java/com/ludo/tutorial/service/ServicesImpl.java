@@ -121,13 +121,19 @@ public class ServicesImpl implements BookService, CategoryService, UserService, 
 	@Override
 	@Transactional
 	public User getUser(String username) {
-		return (User) userDao.get(username);
+		return userDao.get(username);
+	}
+
+	@Override
+	@Transactional
+	public User getUserWithRoles(String username) {
+		return userDao.getWithRoles(username);
 	}
 
 	@Override
 	@Transactional
 	public User getUserWithBooks(String username) {
-		return (User) userDao.getWithBooks(username);
+		return userDao.getWithBooks(username);
 	}
 
 	@Override
@@ -140,7 +146,7 @@ public class ServicesImpl implements BookService, CategoryService, UserService, 
 			copiaUser.setEnabled(true);
 			copiaUser.setCreatedAt(Fecha.getTimeStamp());
 		} else {// El usuario ya existe
-			copiaUser = (User) userDao.get(user.getUsername());
+			copiaUser = userDao.get(user.getUsername());
 			copiaUser.setEnabled(user.isEnabled());
 		}
 		copiaUser.setUpdatedAt(Fecha.getTimeStamp());
@@ -202,10 +208,17 @@ public class ServicesImpl implements BookService, CategoryService, UserService, 
 	}
 
 	@Override
+	@Transactional
+	public long numUserRole(String username) {
+		// TODO Auto-generated method stub
+		return roleDao.numUserRole(username);
+	}
+
+	@Override
 	@Transactional(readOnly = true)
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-		User user = (User) userDao.get(username);
+		User user = userDao.get(username);
 		UserBuilder builder = null;
 		if (user != null) {
 

@@ -30,10 +30,27 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
+	public User getWithRoles(String username) {
+		User user = null;
+		String sentencia = "SELECT user FROM User user inner join fetch user.roles role where user.username = :username ORDER BY role.authority asc";
+		user = (User) sessionFactory.getCurrentSession().createQuery(sentencia).setParameter("username", username)
+				.uniqueResult();
+		if (user == null) {
+			user = sessionFactory.getCurrentSession().find(User.class, username);
+		}
+		return user;
+	}
+
+	@Override
+	public User get(String username) {
+		return sessionFactory.getCurrentSession().get(User.class, username);
+	}
+
+	@Override
 	public List<?> list() {
 		String sentencia;
 		TypedQuery<?> query;
-		sentencia = "from User u ORDER BY u.username";
+		sentencia = "SELECT distinct user from User user left outer join fetch user.roles role ORDER BY user.username ";
 		query = sessionFactory.getCurrentSession().createQuery(sentencia);
 		return query.getResultList();
 	}
@@ -42,7 +59,7 @@ public class UserDaoImpl implements UserDao {
 	public List<?> ListWithBooks() {
 		String sentencia;
 		TypedQuery<?> query;
-		sentencia = "SELECT distinct user from User user left outer join fetch user.books books ORDER BY user.username";
+		sentencia = "SELECT distinct user from User user left outer join fetch user.books books left outer join fetch user.roles role ORDER BY user.username";
 		query = sessionFactory.getCurrentSession().createQuery(sentencia);
 		return query.getResultList();
 	}
@@ -61,11 +78,6 @@ public class UserDaoImpl implements UserDao {
 		User savedUserEntity = sessionFactory.getCurrentSession().find(User.class, username);
 		sessionFactory.getCurrentSession().remove(savedUserEntity);
 
-	}
-
-	@Override
-	public User get(String username) {
-		return sessionFactory.getCurrentSession().find(User.class, username);
 	}
 
 	@Override

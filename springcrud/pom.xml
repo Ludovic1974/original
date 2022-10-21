@@ -5,10 +5,10 @@
 
 	<groupId>com.ludo.tutorial</groupId>
 	<artifactId>springcrud</artifactId>
-	<version>0.2.9-solving-issue-with-current-user-email</version>
+	<version>0.3.0-improving-screen-printing-of-user-roles</version>
 	<packaging>war</packaging>
 
-	<name>Crud Book Model - Solving an issue with the current user's email</name>
+	<name>Crud Book Model - Improve screen printing of user roles</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.ludoviclaisnez.com</url>
 

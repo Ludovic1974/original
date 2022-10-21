@@ -10,6 +10,8 @@ public interface UserService {
 
 	User getUserWithBooks(String username);
 
+	User getUserWithRoles(String username);
+
 	void save(User user);
 
 	void deleteUser(String username);

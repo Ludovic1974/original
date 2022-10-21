@@ -61,6 +61,14 @@
 							<th>Habilitado</th>
 							<td>${user.enabled==true ? "Sí" : "No"}</td>
 						</tr>
+						<c:if test="${numRoles>0}">
+							<c:forEach items="${user.roles}" var="r">
+								<tr>
+									<th>Roles</th>
+									<td>${r.authority}</td>
+								</tr>
+							</c:forEach>
+						</c:if>
 					</table>
 				</div>
 			</div>

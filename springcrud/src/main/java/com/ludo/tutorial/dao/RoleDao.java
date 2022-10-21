@@ -6,4 +6,6 @@ public interface RoleDao {
 
 	void save(Role role);
 
+	long numUserRole(String username);
+
 }

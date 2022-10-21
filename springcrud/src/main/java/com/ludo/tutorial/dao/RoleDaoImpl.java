@@ -18,4 +18,13 @@ public class RoleDaoImpl implements RoleDao {
 
 	}
 
+	@Override
+	public long numUserRole(String username) {
+		long result = 0;
+		result = ((long) sessionFactory.getCurrentSession()
+				.createQuery("SELECT count(*) FROM Role role where role.user.username = :username")
+				.setParameter("username", username).uniqueResult());
+		return result;
+	}
+
 }

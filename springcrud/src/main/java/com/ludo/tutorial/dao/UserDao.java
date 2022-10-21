@@ -8,11 +8,13 @@ public interface UserDao extends ObjectDao {
 
 	void delete(String username);
 
-	Object get(String username);
+	User get(String username);
+
+	User getWithRoles(String username);
 
 	void loanBooks(User user);
 
-	Object getWithBooks(String username);
+	User getWithBooks(String username);
 
 	List<?> ListWithBooks();
 

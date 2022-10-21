@@ -69,7 +69,7 @@ public class User extends DateColumns {
 		this.books = books;
 	}
 
-	@OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, mappedBy = "user")
+	@OneToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, mappedBy = "user", fetch = FetchType.LAZY)
 	private Set<Role> roles = new HashSet<>();
 
 	public Set<Role> getRoles() {

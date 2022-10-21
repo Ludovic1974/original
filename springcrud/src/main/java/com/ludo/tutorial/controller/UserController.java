@@ -120,10 +120,9 @@ public class UserController {
 
 	@GetMapping("/role")
 	public String userRole(@RequestParam("username") String username, Model model) {
-
-		User user = userService.getUser(username);
+		User user = userService.getUserWithRoles(username);
 		model.addAttribute("role", new Role());
-		addAttributes(model, user);
+		addAttributes(model, user, roleService.numUserRole(user.getUsername()));
 		model.addAttribute(user);
 		return "userRole";
 	}
@@ -133,16 +132,17 @@ public class UserController {
 		if (result.hasErrors()) {
 			System.out.println("Pasando por la sección errores");
 			User user = userService.getUser(role.getUser().getUsername());
-			addAttributes(model, user);
+			addAttributes(model, user, roleService.numUserRole(role.getUser().getUsername()));
 			return "userRole";
 		}
 		roleService.save(role);
 		return "redirect:/user/list";
 	}
 
-	private void addAttributes(Model model, User user) {
+	private void addAttributes(Model model, User user, long numUserRole) {
 		ArrayList<String> rolelist = new ArrayList<String>(Arrays.asList("ROLE_USER", "ROLE_WRITER", "ROLE_ADMIN"));
 		model.addAttribute(user);
+		model.addAttribute("numRoles", numUserRole);
 		model.addAttribute("rolelist", rolelist);
 		model.addAttribute("users", userService.listUsers());
 		model.addAttribute("titulo", "Gestionar permisos de " + user.getName());
