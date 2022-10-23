@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ludo.tutorial.dto.CategoryDto;
 import com.ludo.tutorial.model.Category;
+import com.ludo.tutorial.service.BookService;
 import com.ludo.tutorial.service.CategoryService;
 
 @Controller
@@ -21,6 +23,9 @@ public class CategoryController {
 
 	@Autowired
 	private CategoryService categoryService;
+
+	@Autowired
+	private BookService bookService;
 
 	@GetMapping("/list")
 	public String list(Model model) {
@@ -39,14 +44,27 @@ public class CategoryController {
 	}
 
 	@PostMapping("/save")
-	public String saveCategory(@ModelAttribute("category") @Valid Category category, BindingResult result,
+	public String saveCategory(@ModelAttribute("category") @Valid CategoryDto categoryDto, BindingResult result,
 			Model model) {
+		String categoryExist = null;
 		if (result.hasErrors()) {
+			System.out.println("Número de errores: " + result.getErrorCount());
+			System.out.println("EqualCat.cat: " + result.getFieldErrors());
+			System.out.println("Todas errores: " + result.getAllErrors().get(0).getDefaultMessage());
+			for (int i = 0; i < result.getAllErrors().size(); i++) {
+				if (result.getAllErrors().get(i).getDefaultMessage().equals("Esta categoría ya está registrada.")) {
+					System.out.println("error" + i + " " + result.getAllErrors().get(i).getDefaultMessage());
+					categoryExist = "Esta categoría ya está registrada.";
+					continue;
+				}
+			}
+			model.addAttribute("categoryExist", categoryExist);
+			model.addAttribute(categoryDto);
 			addAttributes(model);
 			return "listCategory";
 		}
-		categoryService.save(category);
-
+		Category cat = new Category(categoryDto);
+		categoryService.save(cat);
 		return "redirect:/category/list";
 	}
 

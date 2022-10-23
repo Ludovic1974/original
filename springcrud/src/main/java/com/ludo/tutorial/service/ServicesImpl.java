@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ludo.tutorial.dao.CategoryDao;
 import com.ludo.tutorial.dao.LibraryDao;
 import com.ludo.tutorial.dao.RoleDao;
 import com.ludo.tutorial.dao.UserDao;
@@ -29,8 +30,7 @@ public class ServicesImpl implements BookService, CategoryService, UserService, 
 	private LibraryDao bookDao;
 
 	@Autowired
-	@Qualifier("categoryDaoImpl")
-	private LibraryDao categoryDao;
+	private CategoryDao categoryDao;
 
 	@Autowired
 	private UserDao userDao;
@@ -81,6 +81,12 @@ public class ServicesImpl implements BookService, CategoryService, UserService, 
 	@Transactional(readOnly = true)
 	public List<?> listCategories() {
 		return categoryDao.list();
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<?> findByName(Object nameValue) {
+		return categoryDao.findByName(nameValue);
 	}
 
 	@Override
@@ -177,8 +183,8 @@ public class ServicesImpl implements BookService, CategoryService, UserService, 
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<?> ListWithBooks() {
-		return userDao.ListWithBooks();
+	public List<?> listWithBooks() {
+		return userDao.listWithBooks();
 	}
 
 	@Override

@@ -16,4 +16,6 @@ public interface CategoryService {
 
 	Category getCategory(long id);
 
+	List<?> findByName(Object nameValue);
+
 }

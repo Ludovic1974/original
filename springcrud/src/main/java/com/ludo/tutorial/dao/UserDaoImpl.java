@@ -56,7 +56,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public List<?> ListWithBooks() {
+	public List<?> listWithBooks() {
 		String sentencia;
 		TypedQuery<?> query;
 		sentencia = "SELECT distinct user from User user left outer join fetch user.books books left outer join fetch user.roles role ORDER BY user.username";

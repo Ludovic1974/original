@@ -25,8 +25,11 @@
 								<form:input id="name" path="name" cssClass="form-control"
 									onmouseover="pinta('name')" onmouseout="vuelve('name')" />
 								<form:errors path="name" cssClass="error" />
-								<form:hidden path="id" />							
-							</div>							
+								<c:if test="${categoryExist != null }">
+									<span class="error">${categoryExist}</span>
+								</c:if>
+								<form:hidden path="id" />
+							</div>
 							<button type="submit" class="btn btn-primary">Validar</button>
 						</form:form>
 					</fieldset>
@@ -37,8 +40,8 @@
 						<legend>Listado de categorías</legend>
 						<table class="table table-striped">
 							<tr>
-								<th>Nombre</th>								
-								<th>Modificado</th>							
+								<th>Nombre</th>
+								<th>Modificado</th>
 								<th colspan="2">Acciones</th>
 
 							</tr>
@@ -54,19 +57,19 @@
 									</c:url>
 
 									<tr>
-										<td>${category.name}</td>									
-										<td><fmt:formatDate type="both" value="${category.updatedAt}"
-												dateStyle="long" timeStyle="short" /></td>										
-										<td colspan="2">
-										<a href="${edit}"
+										<td>${category.name}</td>
+										<td><fmt:formatDate type="both"
+												value="${category.updatedAt}" dateStyle="long"
+												timeStyle="short" /></td>
+										<td><a href="${edit}"
 											title="Actualizar ${category.name} con id ${category.id}">
-												<button type="submit" class="btn btn-success btn-sm">M</button></a>
-										<a href="${delete}"
+												<button type="submit" class="btn btn-success btn-sm">M</button>
+										</a></td>
+										<td><a href="${delete}"
 											title="Borrar ${category.name} con id ${category.id}">
 												<button type="submit" class="btn btn-danger btn-sm"
 													onclick="if(!(confirm('¿Seguro que quieres eliminar el registro?'))) return false">X</button>
-										</a>
-										</td>
+										</a></td>
 									</tr>
 								</c:forEach>
 							</c:if>

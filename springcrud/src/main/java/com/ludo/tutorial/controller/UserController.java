@@ -53,7 +53,7 @@ public class UserController {
 	}
 
 	private void addAttributes(Model model) {
-		model.addAttribute("users", userService.ListWithBooks());
+		model.addAttribute("users", userService.listWithBooks());
 		model.addAttribute("how_many", userService.numUsers());
 		model.addAttribute("titulo", "Formulario Usuarios");
 		model.addAttribute("descripcion", "Formulario para añadir/modificar los usuarios");

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.ludo.tutorial.model.Category;
 
 @Repository
-public class CategoryDaoImpl implements LibraryDao {
+public class CategoryDaoImpl implements CategoryDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -27,6 +27,16 @@ public class CategoryDaoImpl implements LibraryDao {
 	}
 
 	@Override
+	public List<?> findByName(Object nameValue) {
+		String sentencia;
+		TypedQuery<?> query;
+		sentencia = "SELECT category from Category category where category.name = :name";
+		System.out.println(sentencia);
+		query = sessionFactory.getCurrentSession().createQuery(sentencia).setParameter("name", nameValue);
+		return query.getResultList();
+	}
+
+	@Override
 	public long num() {
 
 		return ((long) sessionFactory.getCurrentSession().createQuery("SELECT COUNT(*) FROM Category").uniqueResult());
@@ -34,6 +44,7 @@ public class CategoryDaoImpl implements LibraryDao {
 
 	@Override
 	public void save(Object category) {
+		System.out.println(category);
 		sessionFactory.getCurrentSession().saveOrUpdate(category);
 
 	}
@@ -48,7 +59,6 @@ public class CategoryDaoImpl implements LibraryDao {
 	@Override
 	public Category get(long id) {
 		return sessionFactory.getCurrentSession().find(Category.class, id);
-
 	}
 
 }

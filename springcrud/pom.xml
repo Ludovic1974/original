@@ -5,10 +5,10 @@
 
 	<groupId>com.ludo.tutorial</groupId>
 	<artifactId>springcrud</artifactId>
-	<version>0.3.0-improving-screen-printing-of-user-roles</version>
+	<version>0.3.1-solving-problems-with-category-and-role-models</version>
 	<packaging>war</packaging>
 
-	<name>Crud Book Model - Improve screen printing of user roles</name>
+	<name>Crud Book Model - Solving various problems with Category and Role models</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.ludoviclaisnez.com</url>
 

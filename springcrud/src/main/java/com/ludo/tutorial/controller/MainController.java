@@ -50,6 +50,7 @@ public class MainController {
 		msj += "Versión 0.2.8 Revisión global. Resolviendo un problema de seguridad.<br/>";
 		msj += "Versión 0.2.9 Revisión global. Resolviendo un problema con el email del usuario actual.<br/>";
 		msj += "Versión 0.3.0 Mejorar la impresión en pantalla de los roles de usuarios.<br/>";
+		msj += "Versión 0.3.1 Resolviendo varios problemas con los modelos Category y Role.<br/>";
 		mv.addObject("descripcion",
 				"En esta sección, aprenderemos cómo crear un CRUD usando Spring MVC e Hibernate ORM framework "
 						+ "sin ningún fichero de configuración XML que no sea el POM de Maven.");

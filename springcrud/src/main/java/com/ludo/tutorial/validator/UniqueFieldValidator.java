@@ -34,7 +34,6 @@ public class UniqueFieldValidator implements ConstraintValidator<UniqueField, Ob
 			Object emailValue = funciones.getFieldValue(object, this.email);
 			List<?> userListFound = userService.findByEmail(emailValue);
 			Object usernameValue = funciones.getFieldValue(object, this.username);
-			System.out.println("Username: " + usernameValue);
 			if (!userListFound.isEmpty()) {
 				for (Object user : (List<?>) userListFound) {
 					if (usernameValue.equals(((User) user).getUsername())) {
@@ -45,8 +44,6 @@ public class UniqueFieldValidator implements ConstraintValidator<UniqueField, Ob
 			} else {
 				valid = true;
 			}
-
-			System.out.println("valid: " + valid);
 			return valid;
 		} catch (Exception e) {
 			e.printStackTrace();
